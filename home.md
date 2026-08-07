@@ -123,7 +123,8 @@ SMS & USSD Solutions · Mobile Applications · Training Services · Software Dev
 
 - **Address:** 275 Herbert Chitepo and 6th, Harare
 - **Email:** support@lesticom.africa
-- **Phone:** 077 522 2513
+- **Phone:** +263 77 522 2513
+- **Verification:** [CIPZ Company Verification](https://cipz.pfms.gov.zw:8090/Info/Checkacompany?=38482A0242025)
 
 Lesticom provides cutting-edge digital solutions including AI training, software & app development, bulk SMS, secure hosting, IT consultancy, and quality hardware sales — empowering businesses across Africa.
 

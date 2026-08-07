@@ -4,54 +4,65 @@ export default {
   theme: {
     extend: {
       colors: {
-        "surface-variant": "#e2e2e2",
-        "surface-bright": "#f9f9f9",
-        "tertiary-container": "#1b1c1c",
-        "on-secondary-container": "#745c00",
-        "surface-container-highest": "#e2e2e2",
-        "on-secondary-fixed": "#241a00",
-        "primary-container": "#1c1b1b",
-        "inverse-primary": "#c8c6c5",
-        "surface": "#f9f9f9",
-        "on-tertiary-fixed": "#1b1c1c",
-        "surface-dim": "#dadada",
+        // Lesticom Brand — Afrocentric Tech Blue + Gold Accent
+        "surface-variant": "#f5efe6",       // warm cream
+        "surface-bright": "#fdfaf5",          // lightest cream
+        "tertiary-container": "#0c1929",     // deep navy near-black
+        "on-secondary-container": "#0c4a6e", // deep sky
+        "surface-container-highest": "#e6dfd2",
+        "on-secondary-fixed": "#0c1e36",
+        "primary-container": "#dbeafe",      // light blue tint
+        "inverse-primary": "#93c5fd",
+        "surface": "#fdfaf5",
+        "on-tertiary-fixed": "#1e293b",
+        "surface-dim": "#e8e1d4",
         "surface-container-lowest": "#ffffff",
         "on-error": "#ffffff",
-        "primary": "#000000",
-        "background": "#f9f9f9",
-        "inverse-surface": "#2f3131",
-        "on-primary-fixed": "#1c1b1b",
-        "secondary": "#A4000B",
-        "accent": "#A4000B",
-        "inverse-on-surface": "#f1f1f1",
-        "on-tertiary-fixed-variant": "#464747",
-        "on-surface-variant": "#444748",
-        "error-container": "#ffdad6",
+        "primary": "#1e40af",                // Lesticom royal blue
+        "background": "#fdfaf5",             // warm cream background
+        "inverse-surface": "#0c1929",
+        "on-primary-fixed": "#dbeafe",
+        "secondary": "#1e40af",              // royal blue
+        "accent": "#d97706",                 // African gold / ochre
+        "inverse-on-surface": "#f1f5f9",
+        "on-tertiary-fixed-variant": "#475569",
+        "on-surface-variant": "#475569",
+        "error-container": "#fecaca",
         "on-primary": "#ffffff",
-        "outline": "#747878",
-        "surface-container": "#eeeeee",
-        "tertiary-fixed": "#e3e2e2",
-        "surface-container-high": "#e8e8e8",
-        "on-surface": "#1a1c1c",
-        "on-primary-fixed-variant": "#474746",
+        "outline": "#64748b",
+        "surface-container": "#f5efe6",
+        "tertiary-fixed": "#e2e8f0",
+        "surface-container-high": "#ebe4d6",
+        "on-surface": "#0c1929",
+        "on-primary-fixed-variant": "#1e40af",
         "on-secondary": "#ffffff",
-        "error": "#ba1a1a",
-        "tertiary-fixed-dim": "#c7c6c6",
-        "surface-container-low": "#f3f3f3",
-        "tertiary": "#000000",
-        "on-error-container": "#93000a",
-        "on-background": "#1a1c1c",
-        "on-tertiary-container": "#848484",
-        "secondary-container": "#F5A5A5",
-        "outline-variant": "#c4c7c7",
-        "secondary-fixed-dim": "#C91C22",
-        "on-primary-container": "#858383",
-        "primary-fixed": "#e5e2e1",
-        "surface-tint": "#5f5e5e",
+        "error": "#dc2626",
+        "tertiary-fixed-dim": "#cbd5e1",
+        "surface-container-low": "#f9f3e9",
+        "tertiary": "#0c1929",
+        "on-error-container": "#7f1d1d",
+        "on-background": "#0c1929",
+        "on-tertiary-container": "#64748b",
+        "secondary-container": "#dbeafe",
+        "outline-variant": "#cbd5e1",
+        "secondary-fixed-dim": "#1d4ed8",
+        "on-primary-container": "#1e3a8a",
+        "primary-fixed": "#dbeafe",
+        "surface-tint": "#1e40af",
         "on-tertiary": "#ffffff",
-        "on-secondary-fixed-variant": "#6B0D13",
-        "primary-fixed-dim": "#c8c6c5",
-        "secondary-fixed": "#DC3545"
+        "on-secondary-fixed-variant": "#0c1e36",
+        "primary-fixed-dim": "#93c5fd",
+        "secondary-fixed": "#2563eb",        // hover blue
+
+        // Custom Lesticom brand tokens
+        "brand-blue": "#1e40af",
+        "brand-blue-light": "#3b82f6",
+        "brand-blue-dark": "#1e3a8a",
+        "brand-gold": "#d97706",
+        "brand-gold-light": "#f59e0b",
+        "brand-cream": "#fdfaf5",
+        "brand-charcoal": "#0c1929",
+        "brand-indigo": "#312e81"
       },
       borderRadius: {
         "DEFAULT": "0.25rem",
@@ -88,9 +99,13 @@ export default {
         "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
         "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
         "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+      },
+      backgroundImage: {
+        // Subtle African-inspired geometric pattern (data URI)
+        "african-pattern": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%231e40af' stroke-opacity='0.08' stroke-width='1'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z'/%3E%3Cpath d='M30 10L50 30L30 50L10 30Z'/%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3C/g%3E%3C/svg%3E\")",
+        "african-pattern-gold": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23d97706' stroke-opacity='0.12' stroke-width='1'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z'/%3E%3Cpath d='M30 10L50 30L30 50L10 30Z'/%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3C/g%3E%3C/svg%3E\")"
       }
     },
   },
   plugins: [],
 };
-

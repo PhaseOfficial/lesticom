@@ -57,6 +57,7 @@ Our vision is to leverage our unparalleled expertise in challenging and diverse 
 - **Address:** 275 Herbert Chitepo and 6th, Harare
 - **Email:** support@lesticom.africa
 - **Phone:** +263 77 522 2513
+- **Verification:** [CIPZ Company Verification](https://cipz.pfms.gov.zw:8090/Info/Checkacompany?=38482A0242025)
 
 **Quick Links:** Lesticom About · Our Services · Privacy Policy · FAQ'S · Contact Us
 

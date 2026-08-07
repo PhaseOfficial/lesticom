@@ -178,6 +178,7 @@ For questions, concerns, or requests related to this Privacy Policy, contact us 
 275 Herbert Chitepo and 6th, Harare
 Email: customercare@lesticom.africa
 Phone: +263 77 522 2513
+Verification: [CIPZ Company Verification](https://cipz.pfms.gov.zw:8090/Info/Checkacompany?=38482A0242025)
 
 ---
 

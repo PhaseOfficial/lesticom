@@ -146,5 +146,6 @@ If you have any questions or concerns regarding these Terms, please contact us a
 275 Herbert Chitepo and 6th, Harare
 Email: customercare@lesticom.africa
 Phone: +263 77 522 2513
+Verification: [CIPZ Company Verification](https://cipz.pfms.gov.zw:8090/Info/Checkacompany?=38482A0242025)
 
 By using our Services, you confirm that you have read, understood, and agreed to these Terms and Conditions.
