@@ -23,6 +23,10 @@ import {
 import Layout from "../components/common/Layout";
 import Seo from "../components/common/Seo";
 import { getStockImage, stockImages } from "../components/common/stockImages";
+import logoHop from "../assets/clients/house-of-prayer-ministries.jpg";
+import logoGovt from "../assets/clients/zim-gvt.jpg";
+import logoZesa from "../assets/clients/zesa.jpg";
+import logoChibi from "../assets/clients/chibi-high-school.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -445,26 +449,22 @@ const ClientsBand = () => {
     {
       sector: "Churches",
       name: "House of Prayer Ministries",
-      logo: "/clients/house-of-prayer-ministries.svg",
-      site: "https://houseofprayerzim.org",
+      logo: logoHop,
     },
     {
       sector: "Government",
       name: "Ministry of Higher & Tertiary Education",
-      logo: "/clients/zimbabwe-coat-of-arms.svg",
-      site: "https://mhtestd.gov.zw",
+      logo: logoGovt,
     },
     {
       sector: "Parastatals",
       name: "ZESA Pension Fund",
-      logo: "/clients/zesa-logo.svg",
-      site: "https://www.zesa.co.zw",
+      logo: logoZesa,
     },
     {
       sector: "Education Sector",
       name: "Chibi High School",
-      logo: "/clients/chibi-high-school.svg",
-      site: "https://chibihigh.ac.zw",
+      logo: logoChibi,
     },
   ];
 
@@ -484,19 +484,17 @@ const ClientsBand = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
         >
           {clients.map((c, i) => (
-            <motion.a
+            <motion.div
               key={i}
-              href={c.site}
-              target="_blank"
-              rel="noreferrer"
               variants={fadeUp}
               className="group bg-brand-cream border border-brand-charcoal/5 rounded-lg p-6 text-center hover:border-brand-blue hover:shadow-md transition-all"
             >
-              <div className="w-20 h-20 mx-auto mb-3 flex items-center justify-center">
+              <div className="w-24 h-24 mx-auto mb-3 flex items-center justify-center bg-white rounded-lg overflow-hidden">
                 <img
                   src={c.logo}
                   alt={`${c.name} logo`}
                   className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform"
+                  loading="lazy"
                 />
               </div>
               <p className="font-label-lg text-label-sm uppercase tracking-widest text-brand-gold mb-1">
@@ -505,7 +503,7 @@ const ClientsBand = () => {
               <p className="font-headline-md text-lg text-brand-charcoal leading-tight">
                 {c.name}
               </p>
-            </motion.a>
+            </motion.div>
           ))}
         </motion.div>
       </div>
