@@ -223,10 +223,10 @@ const SECTIONS = [
           <>
             To exercise these rights, contact us at{" "}
             <a
-              href="mailto:customercare@lesticom.africa"
+              href="mailto:support@lesticom.africa"
               className="text-brand-blue hover:text-brand-gold font-semibold underline underline-offset-2"
             >
-              customercare@lesticom.africa
+              support@lesticom.africa
             </a>
             .
           </>
@@ -359,7 +359,7 @@ const SECTIONS = [
         type: "contact",
         company: "Lesticom Wireless",
         address: "275 Herbert Chitepo and 6th, Harare",
-        email: "customercare@lesticom.africa",
+        email: "support@lesticom.africa",
         phone: "+263 77 522 2513",
         verificationLabel: "CIPZ Company Verification",
         verificationHref:
@@ -415,7 +415,7 @@ const ContactBlock = ({
   verificationLabel,
   verificationHref,
 }) => (
-  <div className="not-prose mt-4 rounded-2xl border border-outline-variant/40 bg-white p-6 shadow-sm">
+  <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
     <p className="font-headline-md text-lg text-brand-charcoal mb-4">
       {company}
     </p>
@@ -667,10 +667,10 @@ const PrivacyPolicy = () => {
               Contact Us <FaArrowRight className="text-sm" />
             </Link>
             <a
-              href="mailto:customercare@lesticom.africa"
+              href="mailto:support@lesticom.africa"
               className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-label-lg uppercase tracking-wider px-8 py-4 rounded-xl transition-all"
             >
-              <FaEnvelope /> customercare@lesticom.africa
+              <FaEnvelope /> support@lesticom.africa
             </a>
           </motion.div>
         </div>
