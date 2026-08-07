@@ -27,7 +27,7 @@ const PageHero = ({
       : "from-brand-blue/90 via-brand-charcoal/85 to-brand-charcoal/95";
 
   return (
-    <section className="relative pt-24 md:pt-28 pb-16 md:pb-20 overflow-hidden">
+    <section className="relative pt-28 md:pt-32 pb-16 md:pb-20 overflow-hidden">
       {/* Background image */}
       {imageUrl && (
         <div className="absolute inset-0 z-0">

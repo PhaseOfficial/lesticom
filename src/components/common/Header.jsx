@@ -63,7 +63,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm h-16 flex justify-between items-center px-4 md:px-10">
+    <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm h-20 flex justify-between items-center px-4 md:px-10">
       {/* Logo + Mobile Menu */}
       <div className="flex items-center gap-4">
         <button
@@ -80,7 +80,7 @@ const Header = () => {
           <img
             src={logo}
             alt="Lesticom"
-            className="h-12 w-auto object-contain"
+            className="h-16 w-auto object-contain"
           />
         </Link>
       </div>
@@ -185,7 +185,7 @@ const Header = () => {
             >
               <div className="flex justify-between items-center mb-8">
                 <Link to="/" onClick={toggleMenu} className="flex items-center gap-2">
-                  <img src={logo} alt="Lesticom" className="h-12 w-auto" />
+                  <img src={logo} alt="Lesticom" className="h-16 w-auto" />
                 </Link>
                 <button
                   onClick={toggleMenu}

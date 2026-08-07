@@ -23,7 +23,7 @@ const ServiceSidebar = ({
   phone = "+263 77 522 2513",
 }) => {
   return (
-    <aside className="lg:sticky lg:top-24 space-y-6">
+    <aside className="lg:sticky lg:top-28 space-y-6">
       {/* All Services card */}
       <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
         <h3 className="font-headline-md text-lg text-brand-charcoal mb-4 pb-3 border-b border-slate-100">
