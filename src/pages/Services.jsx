@@ -1,302 +1,397 @@
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaDownload } from "react-icons/fa";
-import Layout from "../components/common/Layout";
+import {
+  FaShieldAlt,
+  FaLightbulb,
+  FaServer,
+  FaCode,
+  FaPalette,
+  FaLaptop,
+  FaCommentDots,
+  FaBrain,
+  FaArrowRight,
+  FaCheckCircle,
+  FaPaperPlane,
+} from "react-icons/fa";
 
-// Import local images
-import roofingImg from "../assets/builders working on roof.jpeg";
-import servicesHero from "../assets/builder working on cieling.jpeg";
-import ceilingImg from "../assets/cieling under construction.jpeg";
-import skimmingImg from "../assets/indoor walls painting.png";
-import tilingImg from "../assets/finished wall tilling.jpeg";
-import paintingImg from "../assets/roof painting.jpeg";
-import kitchenImg from "../assets/finished fitted kitchen cabinets .jpeg";
-import tvStandsImg from "../assets/builder working on kitchen cabinets.jpeg";
-import commercialImg from "../assets/builder working on kitchen counter.jpeg";
-import processBg from "../assets/finnished stairs.jpeg";
-import companyProfile from "../assets/Takaz Investments Company Profile 1.pdf";
+import Layout from "../components/common/Layout";
+import Seo from "../components/common/Seo";
+import PageHero from "../components/common/PageHero";
+import { getStockImage, stockImages } from "../components/common/stockImages";
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6, ease: "easeOut" },
+};
+
+const services = [
+  {
+    title: "Cyber Security",
+    slug: "cyber-security",
+    icon: FaShieldAlt,
+    imageKey: "cyber",
+    description:
+      "Military-grade cybersecurity solutions tailored to protect your data, infrastructure, and reputation — from penetration testing to continuous threat monitoring and endpoint protection.",
+  },
+  {
+    title: "IT Consultancy",
+    slug: "it-consultancy",
+    icon: FaLightbulb,
+    imageKey: "consultancy",
+    description:
+      "Strategic tech, tactical growth. We align your IT with your business objectives to maximize ROI and eliminate inefficiencies — for startups and enterprises alike.",
+  },
+  {
+    title: "Secure Hosting",
+    slug: "secure-hosting",
+    icon: FaServer,
+    imageKey: "hosting",
+    description:
+      "Ultra-secure, high-availability hosting tailored for businesses that take uptime and data protection seriously. Servers optimized for speed, resilience, and peace of mind.",
+  },
+  {
+    title: "App Development",
+    slug: "app-development",
+    icon: FaCode,
+    imageKey: "appDev",
+    description:
+      "From idea to impact. We build sleek, scalable, and secure mobile, web, and cross-platform applications that transform your ideas into engaging digital experiences.",
+  },
+  {
+    title: "UI/UX Design",
+    slug: "ui-ux-design",
+    icon: FaPalette,
+    imageKey: "ux",
+    description:
+      "Designs that convert, experiences that stick. We craft human-centered interfaces that drive engagement, usability, and brand loyalty — turning visitors into fans.",
+  },
+  {
+    title: "IT Hardware Supply",
+    slug: "hardware",
+    icon: FaLaptop,
+    imageKey: "hardware",
+    description:
+      "Tech that works as hard as you do. From laptops and desktops to networking gear and printers, we supply reliable business-grade hardware with post-sales support.",
+  },
+  {
+    title: "SMS Services",
+    slug: "sms",
+    icon: FaCommentDots,
+    imageKey: "sms",
+    description:
+      "Direct, instant, effective. Cut through the noise with targeted SMS marketing and notifications — bulk messaging, 2-way communication, and OTPs across African networks.",
+  },
+  {
+    title: "Artificial Intelligence",
+    slug: "ai-training",
+    icon: FaBrain,
+    imageKey: "ai",
+    description:
+      "Empowering Africa through AI. Practical AI training programs and tailored implementations that help you harness intelligent automation and data-driven decision-making.",
+  },
+];
+
+const faqs = [
+  {
+    q: "What services does Lesticom provide and who are they for?",
+    a: "Lesticom offers end-to-end digital solutions including Bulk SMS, domain registration & hosting, website and application development, graphic design, and Wi-Fi modem sales. Whether you're a startup, SME, corporate, or public institution, our services are designed to boost your visibility, streamline communication, and support business growth.",
+  },
+  {
+    q: "How reliable is Lesticom's Bulk SMS platform for business communication?",
+    a: "Our bulk SMS system is robust, fast, and scalable, ensuring real-time delivery across all major networks in Africa. With analytics, API integration, and sender ID options, it's a trusted tool for marketing, alerts, and customer engagement — guaranteed uptime and data security included.",
+  },
+  {
+    q: "What makes Lesticom different from other web and app development providers?",
+    a: "We don't just build websites and apps — we create business-ready solutions. Lesticom prioritizes custom development, local market relevance, and SEO optimization, plus we provide post-launch support. You get a partner, not just a service provider.",
+  },
+];
+
+const ServiceCard = ({ service, index }) => {
+  const Icon = service.icon;
+  const bgImage = stockImages[service.imageKey] || getStockImage("heroAfricanTech");
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: (index % 4) * 0.08, ease: "easeOut" }}
+      className="group relative bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 hover:border-brand-blue/60 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+    >
+      {/* Image background */}
+      <div className="relative h-44 overflow-hidden">
+        <img
+          src={bgImage}
+          alt={service.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-tr from-brand-charcoal/70 via-brand-blue/30 to-transparent" />
+        <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-white/95 backdrop-blur-sm text-brand-blue flex items-center justify-center text-xl shadow-md">
+          <Icon />
+        </div>
+      </div>
+
+      <div className="p-6 space-y-3">
+        <h3 className="font-headline-md text-xl text-brand-charcoal leading-snug">
+          {service.title}
+        </h3>
+        <p className="font-body-md text-on-surface-variant text-sm leading-relaxed">
+          {service.description}
+        </p>
+        <Link
+          to={`/services/${service.slug}`}
+          className="inline-flex items-center gap-2 text-brand-blue font-label-lg uppercase tracking-widest text-xs pt-1 group-hover:text-brand-blue-dark transition-colors"
+        >
+          Read More <FaArrowRight className="text-[10px] transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
+
+      {/* Brand-blue accent border on hover */}
+      <span className="absolute inset-x-0 bottom-0 h-0.5 bg-brand-blue scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+    </motion.div>
+  );
+};
 
 const Services = () => {
-  const [activeFaq, setActiveFaq] = useState(null);
+  const heroImage = getStockImage("heroAfricanCity");
+  const heroImageAlt = getStockImage("heroAfricanTech") ? "African city technology" : "African tech solutions";
 
-  const toggleFaq = (index) => {
-    setActiveFaq(activeFaq === index ? null : index);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8, ease: "easeOut" }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setForm({ name: "", email: "", message: "" });
+    setTimeout(() => setSubmitted(false), 4000);
   };
-
-  const services = [
-    {
-      id: "01",
-      category: "Construction",
-      title: "Roofing Installation & Repairs",
-      description: "Our roofing solutions combine durability with architectural beauty. From brand new installations to critical structural repairs, we use weather-resistant materials designed to withstand the African sun and seasonal rains.",
-      items: ["Concrete & Ceramic Tiling", "Leak Detection & Sealing", "Timber Roof Trusses"],
-      image: roofingImg
-    },
-    {
-      id: "02",
-      category: "Finishing",
-      title: "Ceiling: Suspended, PVC & Gypsum",
-      description: "Transform your interior volume with our bespoke ceiling designs. We specialize in modern gypsum art, cost-effective PVC solutions, and professional suspended ceilings for commercial spaces.",
-      items: ["Sound Insulation Properties", "Integrated Lighting Solutions", "Moisture Resistant Materials"],
-      image: ceilingImg
-    },
-    {
-      id: "03",
-      category: "Finishing",
-      title: "Wall Skimming",
-      description: "Say goodbye to rough walls. Our skimming service provides a glass-smooth base for paint, ensuring a high-end luxury finish that reflects light perfectly throughout your home.",
-      items: ["Ultra-Smooth Polish Finish", "Crack Repair & Reinforcement", "Decorative Wall Texturing"],
-      image: skimmingImg
-    },
-    {
-      id: "04",
-      category: "Flooring",
-      title: "Tiling: Kitchen, Bathroom & Floors",
-      description: "Precision is our standard. We install ceramic, porcelain, and natural stone tiles with flawless alignment and durable grouting to create stunning kitchen backsplashes and high-traffic floor areas.",
-      items: ["Precision Laser Alignment", "Waterproofing for Wet Areas", "Custom Mosaic Installations"],
-      image: tilingImg
-    },
-    {
-      id: "05",
-      category: "Finishing",
-      title: "Interior & Exterior Painting",
-      description: "Our painting experts help you choose the right palette to evoke the right mood. We use premium weather-shield paints for exteriors and washable, high-pigment finishes for interiors.",
-      items: ["Expert Color Consultation", "Weather-Shield Coating", "Eco-Friendly Low VOC Paints"],
-      image: paintingImg
-    },
-    {
-      id: "06",
-      category: "Joinery",
-      title: "Kitchen & Bedroom Cupboards",
-      description: "Maximize your space with custom joinery. From sleek handleless kitchen cabinets to wall-to-wall fitted bedroom wardrobes, we build storage that is as beautiful as it is functional.",
-      items: ["Soft-Close Technology", "Premium Hardware & Hinges", "Bespoke Space Planning"],
-      image: kitchenImg
-    },
-    {
-      id: "07",
-      category: "Joinery",
-      title: "TV Stands & Room Dividers",
-      description: "Modern entertainment units and architectural room dividers designed to integrate technology and style into your living areas.",
-      items: ["Integrated Cable Management", "Aesthetic Room Partitioning", "Custom Entertainment Units"],
-      image: tvStandsImg
-    },
-    {
-      id: "08",
-      category: "Commercial",
-      title: "Shop Fitting & Office Cupboards",
-      description: "Professional retail and office interior solutions. We design and install durable shop fittings and organized office storage systems for modern businesses.",
-      items: ["Retail Display Shelving", "Professional Office Cabinetry", "Reception & Counter Areas"],
-      image: commercialImg
-    }
-  ];
-
-  const processSteps = [
-    { num: "1", title: "Consultation", desc: "We begin with a detailed meeting to understand your vision, requirements, and budget constraints." },
-    { num: "2", title: "Site Inspection", desc: "Our experts conduct a physical assessment to evaluate structural conditions and take precise measurements." },
-    { num: "3", title: "Planning & Quotation", desc: "We present a comprehensive project plan along with a transparent, itemized quote for your approval." },
-    { num: "4", title: "Project Execution", desc: "Construction begins under strict supervision, adhering to the highest safety and quality standards." },
-    { num: "5", title: "Final Finishing", desc: "The final touches are applied, followed by a joint walkthrough to ensure your complete satisfaction." }
-  ];
-
-  const faqs = [
-    { q: "How long does a typical renovation take?", a: "The timeline depends on the project scope. A simple kitchen renovation might take 2-3 weeks, while a full home construction can span several months. We provide a detailed project schedule during the planning phase." },
-    { q: "Is there a fee for site inspections and quotes?", a: "Initial quotes are generally free. However, for complex site inspections that require structural engineering assessments or travel beyond our primary service areas, a nominal consultation fee may apply, which is often credited back upon project approval." },
-    { q: "Which areas do you provide services to?", a: "We currently operate primarily within Harare and surrounding metropolitan areas. For large-scale projects, we are open to discussing travel to other regions in Zimbabwe." },
-    { q: "Do you provide the building materials?", a: "We offer both labor-only and full-package (labor + materials) options. We source materials from trusted premium suppliers to guarantee structural integrity and finishing quality, but we are happy to work with materials you have already purchased if they meet safety standards." }
-  ];
 
   return (
     <Layout>
-      <main>
-        {/* Hero Section */}
-        <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <img 
-              alt="Construction Hero" 
-              className="w-full h-full object-cover grayscale-[20%]" 
-              src={servicesHero} 
-            />
-            <div className="absolute inset-0 bg-primary/40 backdrop-brightness-75"></div>
-          </div>
-          <div className="relative z-10 text-center px-margin-mobile max-w-4xl text-white">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="font-display-lg text-display-lg-mobile md:text-display-lg font-bold leading-tight mb-stack-sm"
-            >
-              Our Construction Services
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="font-body-lg text-body-lg text-white/90 max-w-2xl mx-auto"
-            >
-              High-quality finishing and construction solutions tailored for your home or business. We build legacies, one detail at a time.
-            </motion.p>
-          </div>
-        </section>
+      <Seo
+        title="Our Services — Lesticom"
+        description="Bulk SMS, IT consultancy, AI, cyber security, UX/UI design, hardware sales, software & more from Lesticom."
+        image={heroImage}
+        url="/services"
+      />
 
-        {/* Services Section */}
-        <section className="py-stack-lg container mx-auto px-margin-mobile md:px-margin-desktop relative">
-          <div className="absolute inset-0 pointer-events-none opacity-[0.05]" style={{
-            backgroundImage: 'radial-gradient(#8E8E8E 0.5px, transparent 0.5px)',
-            backgroundSize: '24px 24px'
-          }}></div>
-          <div className="space-y-stack-lg relative z-10">
+      {/* HERO */}
+      <PageHero
+        breadcrumb="Services"
+        title="We Provide the Best Quality"
+        subtitle="End-to-end digital solutions for African businesses — from AI to hardware."
+        imageUrl={heroImage}
+        imageAlt={heroImageAlt}
+        accent="blue"
+      />
+
+      {/* SERVICES GRID */}
+      <section className="py-stack-lg bg-brand-cream">
+        <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+          <motion.div {...fadeInUp} className="text-center mb-12">
+            <span className="inline-block text-xs font-label-lg uppercase tracking-widest text-brand-blue bg-primary-container px-3 py-1.5 rounded-full">
+              What We Offer
+            </span>
+            <h2 className="mt-3 font-headline-lg text-headline-md md:text-headline-lg text-brand-charcoal">
+              Solutions Built for African Business
+            </h2>
+            <p className="mt-3 text-on-surface-variant max-w-2xl mx-auto font-body-md leading-relaxed">
+              Eight core services covering every layer of your digital stack —
+              from infrastructure to intelligence, design to delivery.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-stack-md">
             {services.map((service, index) => (
-              <motion.div 
-                key={service.id}
+              <ServiceCard key={service.slug} service={service} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <section className="py-stack-lg bg-white">
+        <div className="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+          <motion.div {...fadeInUp} className="text-center mb-12">
+            <span className="inline-block text-xs font-label-lg uppercase tracking-widest text-brand-blue bg-primary-container px-3 py-1.5 rounded-full">
+              FAQs
+            </span>
+            <h2 className="mt-3 font-headline-lg text-headline-md md:text-headline-lg text-brand-charcoal">
+              What to Know About Our Services
+            </h2>
+            <p className="mt-3 text-on-surface-variant max-w-2xl mx-auto font-body-md leading-relaxed">
+              Quick answers to the most common questions we hear from clients
+              across Southern Africa.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+            {faqs.map((faq, i) => (
+              <motion.div
+                key={i}
                 {...fadeInUp}
-                className={`flex flex-col md:flex-row items-center gap-12 group ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                className="bg-brand-cream border border-slate-200 rounded-2xl p-6 md:p-7 shadow-sm hover:shadow-md hover:border-brand-blue/40 transition-all"
               >
-                <div className="w-full md:w-1/2 overflow-hidden rounded-xl shadow-xl">
-                  <img 
-                    className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-700" 
-                    src={service.image} 
-                    alt={service.title} 
-                  />
+                <div className="flex items-start gap-3 mb-4">
+                  <span className="flex-shrink-0 w-9 h-9 rounded-full bg-brand-blue text-white flex items-center justify-center text-sm font-bold">
+                    {i + 1}
+                  </span>
+                  <h3 className="font-headline-md text-lg text-brand-charcoal leading-snug">
+                    {faq.q}
+                  </h3>
                 </div>
-                <div className="w-full md:w-1/2 space-y-stack-sm text-left">
-                  <span className="text-secondary font-label-lg uppercase tracking-widest">{service.id} / {service.category}</span>
-                  <h2 className="font-headline-lg text-headline-lg text-primary">{service.title}</h2>
-                  <p className="text-on-surface-variant font-body-md">{service.description}</p>
-                  <ul className="space-y-2 text-on-surface">
-                    {service.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-secondary-container bg-primary rounded-full p-1 text-[16px]">check</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link 
-                    to="/contact"
-                    className="inline-block mt-4 bg-secondary-container text-on-secondary-container px-8 py-3 rounded-lg font-label-lg hover:brightness-95 transition-all"
-                  >
-                    Request Quote
-                  </Link>
-                </div>
+                <p className="text-on-surface-variant font-body-md leading-relaxed">
+                  {faq.a}
+                </p>
               </motion.div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Process Timeline */}
-        <section className="relative py-stack-lg overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <img 
-              src={processBg} 
-              alt="Process Background" 
-              className="w-full h-full object-cover grayscale-[40%]"
-            />
-            <div className="absolute inset-0 bg-primary/80 backdrop-blur-sm"></div>
-          </div>
+      {/* TALK TO US — CONTACT FORM */}
+      <section className="py-stack-lg bg-gradient-to-br from-brand-blue via-brand-blue-dark to-brand-charcoal text-white relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.08] pointer-events-none"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z'/%3E%3Cpath d='M30 10L50 30L30 50L10 30Z'/%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3C/g%3E%3C/svg%3E\")",
+          }}
+        />
+        <div className="relative z-10 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center">
+            <motion.div {...fadeInUp}>
+              <span className="inline-block text-xs font-label-lg uppercase tracking-widest text-brand-gold-light bg-white/10 px-3 py-1.5 rounded-full">
+                How May We Help You
+              </span>
+              <h2 className="mt-4 font-headline-lg text-headline-md md:text-headline-lg leading-tight">
+                Talk to Us
+              </h2>
+              <p className="mt-4 text-white/80 font-body-md leading-relaxed max-w-lg">
+                Have a project in mind or a question about our services? Drop us
+                a message and our team will get back to you within 24 hours.
+              </p>
 
-          <div className="relative z-10 text-white">
-            <div className="container mx-auto px-margin-mobile md:px-margin-desktop text-center mb-16">
-              <motion.h2 {...fadeInUp} className="font-headline-lg text-headline-lg mb-4 uppercase tracking-tight font-bold">Our 5-Step Process</motion.h2>
-              <motion.p {...fadeInUp} className="text-white/70 max-w-xl mx-auto">From the first handshake to the final polish, we ensure transparency and precision at every stage of the journey.</motion.p>
-            </div>
-            
-            <div className="max-w-4xl mx-auto px-margin-mobile relative">
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-secondary-fixed/30 -translate-x-1/2 hidden md:block"></div>
-              <div className="space-y-16">
-                {processSteps.map((step, index) => (
-                  <motion.div 
-                    key={step.num}
-                    {...fadeInUp}
-                    className={`relative flex flex-col md:flex-row items-center group ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
-                  >
-                    <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
-                      <h3 className="font-headline-md text-headline-md mb-2">{step.num}. {step.title}</h3>
-                      <p className="text-white/60">{step.desc}</p>
-                    </div>
-                    <div className="absolute left-0 md:left-1/2 w-10 h-10 bg-secondary text-primary font-bold rounded-full flex items-center justify-center -translate-x-1/2 z-10 border-4 border-primary shadow-xl">{step.num}</div>
-                    <div className="md:w-1/2"></div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+              <ul className="mt-6 space-y-3 text-sm text-white/85">
+                <li className="flex items-start gap-3">
+                  <FaCheckCircle className="text-brand-gold-light mt-1 shrink-0" />
+                  <span>Trusted across Zimbabwe, Zambia, Malawi &amp; Mozambique</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FaCheckCircle className="text-brand-gold-light mt-1 shrink-0" />
+                  <span>Tailored solutions for startups, SMEs &amp; enterprises</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FaCheckCircle className="text-brand-gold-light mt-1 shrink-0" />
+                  <span>Local expertise with international standards</span>
+                </li>
+              </ul>
+            </motion.div>
 
-        {/* FAQ Section */}
-        <section className="py-stack-lg container mx-auto px-margin-mobile md:px-margin-desktop text-left">
-          <div className="text-center mb-16">
-            <h2 className="font-headline-lg text-headline-lg text-primary">Frequently Asked Questions</h2>
-            <p className="text-on-surface-variant font-body-md">Everything you need to know about starting your project with Takaz Homes.</p>
-          </div>
-          <div className="max-w-3xl mx-auto space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border border-outline-variant/50 rounded-xl overflow-hidden bg-white">
-                <button 
-                  className="w-full flex justify-between items-center px-6 py-5 text-left font-headline-md transition-colors hover:bg-surface-container-low"
-                  onClick={() => toggleFaq(index)}
+            <motion.form
+              {...fadeInUp}
+              onSubmit={handleSubmit}
+              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-8 space-y-5"
+            >
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-xs font-label-lg uppercase tracking-widest text-white/70 mb-2"
                 >
-                  <span>{faq.q}</span>
-                  <motion.span 
-                    animate={{ rotate: activeFaq === index ? 180 : 0 }}
-                    className="material-symbols-outlined"
-                  >
-                    expand_more
-                  </motion.span>
-                </button>
-                <AnimatePresence>
-                  {activeFaq === index && (
-                    <motion.div 
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 py-5 text-on-surface-variant bg-surface-bright border-t border-outline-variant/30">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                  Your Name *
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Full name"
+                  className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-brand-gold-light focus:bg-white/10 transition-colors"
+                />
               </div>
-            ))}
-          </div>
-        </section>
 
-        {/* Final CTA */}
-        <section className="py-stack-lg bg-tertiary-container text-white text-center">
-          <div className="container mx-auto px-margin-mobile">
-            <motion.h2 {...fadeInUp} className="font-headline-lg text-headline-lg mb-6">Ready to start your dream project?</motion.h2>
-            <motion.p {...fadeInUp} className="text-white/70 mb-10 max-w-2xl mx-auto">Our team of expert craftsmen and architectural specialists are ready to turn your vision into reality. Request a free consultation today.</motion.p>
-            <div className="flex flex-col md:flex-row justify-center gap-4">
-              <Link
-                to="/contact"
-                className="bg-secondary-fixed text-on-secondary-fixed px-10 py-4 rounded-lg font-label-lg font-bold hover:scale-105 transition-transform active:scale-95 text-center"
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-xs font-label-lg uppercase tracking-widest text-white/70 mb-2"
+                >
+                  Your Email *
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="you@example.com"
+                  className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-brand-gold-light focus:bg-white/10 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-xs font-label-lg uppercase tracking-widest text-white/70 mb-2"
+                >
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Tell us about your project or question..."
+                  className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/40 resize-none focus:outline-none focus:border-brand-gold-light focus:bg-white/10 transition-colors"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-blue-light text-white font-label-lg uppercase tracking-widest px-8 py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
-                REQUEST A QUOTE
-              </Link>
-              <Link
-                to="/contact"
-                className="border border-white/30 text-white px-10 py-4 rounded-lg font-label-lg hover:bg-white/10 transition-colors text-center"
-              >
-                GET IN TOUCH
-              </Link>
-              <a
-                href={companyProfile}
-                download
-                className="bg-white/20 border border-white/30 text-white px-10 py-4 rounded-lg font-label-lg hover:bg-white/30 transition-colors text-center flex items-center justify-center gap-2"
-              >
-                <FaDownload /> COMPANY PROFILE
-              </a>
-            </div>
+                Send Message <FaPaperPlane className="text-sm" />
+              </button>
+            </motion.form>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+
+      {/* SUCCESS TOAST */}
+      <AnimatePresence>
+        {submitted && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 40 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed bottom-6 right-6 z-50 bg-brand-charcoal text-white px-5 py-4 rounded-xl shadow-2xl border border-brand-gold/40 flex items-center gap-3 max-w-sm"
+          >
+            <FaCheckCircle className="text-brand-gold-light text-xl shrink-0" />
+            <div>
+              <p className="font-label-lg uppercase tracking-widest text-xs text-brand-gold-light">
+                Message Sent
+              </p>
+              <p className="font-body-md text-sm text-white/85">
+                Thanks — we'll be in touch within 24 hours.
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Layout>
   );
 };
