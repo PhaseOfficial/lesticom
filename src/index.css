@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  color: #1b1c1c;
+  background-color: #fbf9f8;
+  --primary: #000000;
+  --secondary: #A4000B;
+  --secondary-fixed: #DC3545;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-background text-on-surface font-body-md overflow-x-hidden;
+  min-height: 100dvh;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom selection color */
+::selection {
+  @apply bg-secondary text-white;
+}
+
+/* TAKAZ HOMES Design System Utilities */
+
+.glass-morphism {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.glass-morphism-dark {
+  @apply bg-primary/80 backdrop-blur-md border border-white/10 shadow-xl;
+}
+
+.service-card-shadow {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.architectural-connector {
+  @apply relative;
+}
+
+.architectural-connector::after {
+  content: '';
+  @apply absolute left-1/2 top-full w-0.5 h-full bg-outline-variant/30 -translate-x-1/2;
+}
+
+/* Animation Utilities */
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-[1.02];
+}
+
+/* Typography Utility Classes */
+.display-lg {
+  @apply font-display-lg font-bold tracking-tight;
+}
+
+.headline-lg {
+  @apply font-headline-lg font-bold tracking-tight uppercase;
+}
+
+.label-caps {
+  @apply font-label-lg uppercase tracking-widest text-[10px];
+}

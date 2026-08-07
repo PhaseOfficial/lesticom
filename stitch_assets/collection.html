@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JAVA HAUS | Collections</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&amp;family=Bricolage+Grotesque:wght@200..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#80290c",
+                        "secondary-container": "#e3e1c5",
+                        "on-secondary-fixed": "#1c1c0b",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-surface-variant": "#56423c",
+                        "background": "#fcf9f4",
+                        "primary-fixed-dim": "#ffb59f",
+                        "on-secondary-container": "#64644d",
+                        "outline-variant": "#ddc0b8",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "secondary-fixed": "#e6e4c8",
+                        "tertiary": "#735c00",
+                        "on-primary-container": "#ffffff",
+                        "inverse-surface": "#31302d",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "outline": "#8a726b",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e5e2dd",
+                        "tertiary-container": "#cca730",
+                        "inverse-primary": "#ffb59f",
+                        "primary-fixed": "#ffdbd1",
+                        "surface-container-high": "#ebe8e3",
+                        "secondary": "#606049",
+                        "on-primary-fixed": "#3a0a00",
+                        "on-secondary-fixed-variant": "#484833",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcdad5",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1c1c19",
+                        "surface-container-highest": "#e5e2dd",
+                        "inverse-on-surface": "#f3f0eb",
+                        "surface-container": "#f0ede8",
+                        "surface": "#fcf9f4",
+                        "tertiary-fixed": "#ffe088",
+                        "primary": "#9f3f21",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#c9c8ad",
+                        "on-background": "#1c1c19",
+                        "surface-tint": "#a04022",
+                        "on-tertiary-container": "#4f3d00",
+                        "primary-container": "#bf5737",
+                        "surface-container-low": "#f6f3ee",
+                        "surface-bright": "#fcf9f4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "patchwork-gap": "40px"
+                    },
+                    "fontFamily": {
+                        "subheading": ["Bricolage Grotesque"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "display-lg": ["Bodoni Moda"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Bodoni Moda"],
+                        "label-caps": ["Space Mono"]
+                    },
+                    "fontSize": {
+                        "subheading": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
+                        "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .stitched-border {
+            border-style: dashed;
+            border-width: 2px;
+        }
+        .torn-edge {
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 24' preserveAspectRatio='none'%3E%3Cpath d='M0 0c100 10 200 0 300 10s200-10 300 0 200 10 300 0 200-10 300 0v14H0z' fill='%23000'/%3E%3C/svg%3E");
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 24' preserveAspectRatio='none'%3E%3Cpath d='M0 0c100 10 200 0 300 10s200-10 300 0 200 10 300 0 200-10 300 0v14H0z' fill='%23000'/%3E%3C/svg%3E");
+        }
+        .mudcloth-pattern {
+            background-image: radial-gradient(#8a726b 0.5px, transparent 0.5px);
+            background-size: 16px 16px;
+        }
+        .scrapbook-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+        }
+        .tab-hand-drawn {
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .tab-hand-drawn.active {
+            border-bottom: 3px solid #9f3f21;
+            transform: rotate(-1deg);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface border-b-2 border-dashed border-outline flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-gutter">
+<div class="flex items-center gap-4">
+<button class="text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter uppercase">JAVA HAUS</h1>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-caps text-label-caps text-primary border-b-2 border-primary transition-colors duration-200" href="#">Collections</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">The Atelier</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Sustainability</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Journal</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-primary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</header>
+<main class="pt-32 pb-20">
+<!-- Hero Section -->
+<section class="px-margin-mobile md:px-margin-desktop mb-20 relative">
+<div class="flex flex-col md:flex-row items-end gap-10">
+<div class="md:w-1/2">
+<h2 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary leading-none mb-6">
+                        Wear Your <br/><span class="italic font-normal">Ancestry.</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                        Our latest drop blends traditional mudcloth motifs with high-fashion tailoring. Hand-stitched in the heart of the continent for the global citizen.
+                    </p>
+</div>
+<div class="md:w-1/2 relative group">
+<div class="absolute -top-4 -left-4 w-full h-full border-2 border-dashed border-outline-variant -z-10 transform group-hover:translate-x-2 group-hover:translate-y-2 transition-transform"></div>
+<img class="w-full h-[500px] object-cover grayscale-0 hover:grayscale-[0.5] transition-all duration-700" data-alt="A high-fashion editorial portrait of an African model wearing a structured terracotta-colored jacket with intricate hand-stitched patterns. The lighting is warm and dramatic, highlighting the rich fabric texture and deep shadows. The setting is a minimalist studio with warm earthy tones that match the brand's luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsxPX5QnsXEO0S_0k4g-Icv157ginsmrjXzOBuHtZ7fbD5UXE2iVgaaN3lTCi3VugngS2Ewe3qagQthIcgmO6Copv-XUIKPHWysaolxOZpeQ4E3UDgH6tnbGPxRLzxQBRmgAFLgSJpcyK8TTQBxzJpRDFqCQopflEh1kIuPZ7RYlilNc8VKkcRcoRdc3bVjTKyGLIvL2omZ7eF1swzJGqy-lDhJofYjxjhb5W1Y7h-v7RR_TNdXxehD8rbnVUF0zm79ZjrSxYyw94"/>
+<div class="absolute bottom-6 -right-10 bg-tertiary-container text-on-tertiary-container px-6 py-4 transform rotate-3 shadow-xl">
+<span class="font-label-caps text-label-caps">SEASON 04 / '24</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Filters Section -->
+<section class="px-margin-mobile md:px-margin-desktop mb-16">
+<div class="flex flex-wrap gap-8 items-baseline border-b-2 border-outline-variant pb-4">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Filter By:</span>
+<button class="font-subheading text-subheading tab-hand-drawn active text-primary">All Works</button>
+<button class="font-subheading text-subheading tab-hand-drawn text-on-surface-variant hover:text-primary">Prints</button>
+<button class="font-subheading text-subheading tab-hand-drawn text-on-surface-variant hover:text-primary">Basics</button>
+<button class="font-subheading text-subheading tab-hand-drawn text-on-surface-variant hover:text-primary">Limited</button>
+</div>
+</section>
+<!-- Product Scrapbook Grid -->
+<section class="px-margin-mobile md:px-margin-desktop">
+<div class="scrapbook-grid">
+<!-- Product 1: The Nomad Kimono -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 mb-12">
+<div class="relative bg-surface-container-low p-4 transform hover:-rotate-1 transition-transform duration-500">
+<div class="aspect-[3/4] overflow-hidden mb-6 border-2 border-outline relative">
+<img class="w-full h-full object-cover" data-alt="A male model wearing a loose-fitting linen kimono in deep olive green with hand-painted mudcloth patterns on the sleeves. The shot is captured in a sun-drenched outdoor garden with warm golden hour lighting that accentuates the organic fabric texture. The mood is relaxed and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDLD9_ujkKDYgb4r3byNyNEAyzyNfnbkewOhOo8wvSAvWhsOOLfYeafmxpFmmHnCdlpymeDJ8VKy7zi56T9QTUZvbHFI63n7n2ToEhfuG8ftdnNId9XJIXRiT2mtLTodMntu5kEd8MCxVwBgxQpG0ESE1e67Tfs7ICmkhZZ5J7ZhAc8jBHUCktIkA6ys2v0jK-agbmCXxZUqWIRgXmX4pOcHNCubelk9QWoFML8_mw6MY7Isvwx3xEoBHcQFo9FPsLS8LqJfIv0bo"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<h3 class="font-subheading text-subheading text-on-surface">The Nomad Kimono</h3>
+<span class="font-label-caps text-label-caps text-primary">$185</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Heavyweight linen, indigo-dyed accents.</p>
+<div class="pt-4">
+<a class="inline-block w-full text-center bg-on-surface text-surface py-3 font-label-caps text-label-caps uppercase tracking-tighter hover:bg-primary transition-colors border-r-2 border-b-2 border-tertiary-container" href="https://wa.me/263712345678?text=Hello%20Java%20Haus,%20I%20would%20like%20to%20order%20the%20The%20Nomad%20Kimono.">
+                                    Order on WhatsApp
+                                </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 2: Terracotta Utility Vest (Asymmetric placement) -->
+<div class="col-span-12 md:col-span-6 lg:col-span-5 lg:mt-24 mb-12 md:ml-12">
+<div class="relative bg-surface-container-highest p-6 transform hover:rotate-1 transition-transform duration-500">
+<div class="absolute -top-6 -right-6 w-24 h-24 mudcloth-pattern opacity-30"></div>
+<div class="aspect-square overflow-hidden mb-6 border-4 border-double border-primary relative">
+<img class="w-full h-full object-cover" data-alt="Detailed close-up of a terracotta-colored utility vest with multiple pockets and bronze button hardware. The fabric shows a rugged canvas weave with visible hand-stitched reinforcements. The lighting is soft and directional, showcasing the high-quality craftsmanship and warm earth tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiwXnw21e9mjN16qYaHg8bJLwA7cdY3HHuECH2ndSSszMDTeGe9O0gZXd8vwhSPp5TVoJ06-Mt1WDnO-Xuwx3v8veHJbjg7l2Zd0dtuKzb_R2VEe12qRXAaBi9Xd-nj6ugLDFlzsauwDG9Tu7cW4u5VeRRcu1JSimi1Nx9VurdoQPqnk-I3U5aId0Tdrz8l9JaOvj4m983-pq3Pm2ddryO-Ux5w4ybVyM1Hu6hmIODGERnDxEdOw1VNj3Ju50L7oeoQInCmfi97IY"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<h3 class="font-subheading text-subheading text-on-surface">Sahara Utility Vest</h3>
+<span class="font-label-caps text-label-caps text-primary">$140</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic">8-pocket canvas construction.</p>
+<div class="pt-4">
+<a class="inline-block w-full text-center bg-on-surface text-surface py-3 font-label-caps text-label-caps uppercase tracking-tighter hover:bg-primary transition-colors border-r-2 border-b-2 border-tertiary-container" href="https://wa.me/263712345678?text=Hello%20Java%20Haus,%20I%20would%20like%20to%20order%20the%20Sahara%20Utility%20Vest.">
+                                    Order on WhatsApp
+                                </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 3: Patterned Trousers (Wide span) -->
+<div class="col-span-12 lg:col-span-3 mb-12">
+<div class="relative bg-secondary-container/30 p-4 transform hover:-rotate-1 transition-transform duration-500">
+<div class="aspect-[3/5] overflow-hidden mb-6 border-2 border-dashed border-outline-variant relative">
+<img class="w-full h-full object-cover" data-alt="Wide-legged trousers featuring an intricate black and white African tribal print pattern. The garment is draped elegantly over a minimal clay-colored pedestal. The studio lighting is bright and clean, emphasizing the contrast in the pattern and the fluid silhouette of the pants." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChbsBHB-c5-xBv8P8FITxC700Y48Q_NTBvvufQf69LkKR5_FgZ5y5xqANZbNTxkLtnSElR-Yzfm_9c4VgquruLFjvDh1wz4BM8W0ItKAzPa1AS8qi3fSVjXXLtm9CxbXM5NIWVLRoUvKmL2hLx1isA3k5DaFylx44-eK8sl5RtbBD3beWLGja9KeqK04OjNTQIHMNJug8omoStRKP-Eawxzra-2h6v5Ht1lDkQULyskmQuBJ3iNGnK_lAo-jBa7RGjeXFjGqA2ZPQ"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<h3 class="font-subheading text-subheading text-on-surface">Zuri Trousers</h3>
+<span class="font-label-caps text-label-caps text-primary">$210</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Batik print on organic cotton.</p>
+<div class="pt-4">
+<a class="inline-block w-full text-center bg-on-surface text-surface py-3 font-label-caps text-label-caps uppercase tracking-tighter hover:bg-primary transition-colors border-r-2 border-b-2 border-tertiary-container" href="https://wa.me/263712345678?text=Hello%20Java%20Haus,%20I%20would%20like%20to%20order%20the%20Zuri%20Trousers.">
+                                    Order on WhatsApp
+                                </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Break / Motif -->
+<div class="col-span-12 py-10 flex justify-center items-center">
+<div class="w-full h-[2px] bg-outline-variant/30 flex justify-center items-center">
+<div class="bg-background px-10">
+<span class="material-symbols-outlined text-primary text-4xl">architecture</span>
+</div>
+</div>
+</div>
+<!-- Product 4: Heritage Shawl -->
+<div class="col-span-12 md:col-span-6 lg:col-span-6 mb-12">
+<div class="relative bg-surface-container-high p-8 transform hover:rotate-2 transition-transform duration-500">
+<div class="grid grid-cols-2 gap-6">
+<div class="aspect-[3/4] overflow-hidden border-2 border-outline">
+<img class="w-full h-full object-cover" data-alt="A woman draped in a large, heavy-knit shawl with deep brown and gold earthy tones. The texture of the knit is chunky and handmade, with fringes at the edges. The model is standing in front of a rustic mud-brick wall, creating a tactile and organic atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADOyPDhyN_Ea32zYb5jQ6G86rC1MUYty6WZNElMCeg-jqfbrBVxVzkzEjPeXx-w5gOeBprSTu5i8QxZyCe7KJkqG3qNbRGUySY04yoYUJEiQ4mx8pxVNkKCAwqzGi-LGmFOSvhXsEotGMCsmRCgMzZVi8fvgcKgznFOVCxf0rGwKpxOOIobIQHbfouVh08Tv0C5shjwpWiz02VtL2ugUhFtn3NNM86fsE40vNxrmLv5hd9OP5j1x044Mrfl1nPNlMYHtqDe3xnXEY"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="font-headline-lg text-subheading text-primary mb-2">Heritage Shawl</h3>
+<p class="font-body-md text-body-md text-on-surface mb-6">A limited release piece woven by the elders of the Bulawayo collective. Each piece takes 14 days to finish.</p>
+<span class="font-display-lg text-subheading mb-4">$320</span>
+<a class="inline-block text-center bg-primary text-on-primary py-3 font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-surface transition-all" href="https://wa.me/263712345678?text=Hello%20Java%20Haus,%20I%20would%20like%20to%20order%20the%20Heritage%20Shawl.">
+                                    Secure via WhatsApp
+                                </a>
+</div>
+</div>
+<div class="absolute -bottom-4 -left-4 font-label-caps text-outline text-[60px] opacity-10 select-none pointer-events-none">LIMITED EDITION</div>
+</div>
+</div>
+<!-- Product 5: Atelier Shirt -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 lg:col-start-8 mb-12">
+<div class="relative bg-surface p-4 border-2 border-outline transform hover:-rotate-1 transition-transform duration-500 shadow-sm">
+<div class="aspect-square overflow-hidden mb-6 relative grayscale hover:grayscale-0 transition-all duration-700">
+<img class="w-full h-full object-cover" data-alt="A crisp, white button-down shirt with minimalist hand-stitched detailing on the collar and cuffs in gold thread. The shirt is shown in a high-fashion, high-contrast studio shot with a single sharp light source, emphasizing the clean lines and premium fabric quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqkao9y9oZLeaUtSt4Xaa6XYeO_d-tWtKVmhz2diJOlvcsLDtPkf1JRu2g5h56gTRxDhPDVQpVxLYeBPhLKoqFvvv9mBMlAuRwAlhM9H9xYQLSslpkUs884pCq1UlSWwUpqvUMvEmgmtuKvjh_i0XMP0XiNG4OOWXMzRu1WO2JfwUSCAAXo8G8WPNZhLB8guIS9Z0YAEB3FD-Vfi0miUhYH_bc7jA40NFSBZdZIJtKkXylGjJ1SuDdeISw2JS4BMGBs79dUNtFAdk"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<h3 class="font-subheading text-subheading text-on-surface">The Atelier Shirt</h3>
+<span class="font-label-caps text-label-caps text-primary">$125</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Crisp poplin with gold stitch details.</p>
+<div class="pt-4">
+<a class="inline-block w-full text-center bg-on-surface text-surface py-3 font-label-caps text-label-caps uppercase tracking-tighter hover:bg-primary transition-colors border-r-2 border-b-2 border-tertiary-container" href="https://wa.me/263712345678?text=Hello%20Java%20Haus,%20I%20would%20like%20to%20order%20the%20Atelier%20Shirt.">
+                                    Order on WhatsApp
+                                </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Stitched Box -->
+<section class="px-margin-mobile md:px-margin-desktop mt-32">
+<div class="bg-on-surface text-surface py-20 px-8 md:px-20 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-full mudcloth-pattern opacity-10"></div>
+<div class="max-w-2xl relative z-10">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-6 leading-tight">Join the Haus</h2>
+<p class="font-body-lg text-body-lg text-surface-variant mb-10">Sign up to get early access to limited collections and invitations to our secret atelier pop-ups.</p>
+<form class="flex flex-col md:flex-row gap-4">
+<input class="bg-transparent border-0 border-b-2 border-outline-variant text-surface font-label-caps placeholder:text-outline-variant/50 focus:ring-0 focus:border-primary w-full py-4" placeholder="YOUR EMAIL ADDRESS" type="email"/>
+<button class="bg-primary text-on-primary px-10 py-4 font-label-caps text-label-caps uppercase hover:bg-tertiary transition-colors whitespace-nowrap">Subscribe</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-on-surface text-surface pt-24 pb-12 border-t-4 border-double border-outline px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-patchwork-gap mb-20">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-surface-container-lowest mb-6">JAVA HAUS</h2>
+<p class="font-body-md text-body-md text-surface-variant max-w-xs">Hand-stitched for the future. Blending heritage techniques with futuristic silhouettes since 2018.</p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Brand</span>
+<a class="font-body-md text-body-md text-surface-variant hover:text-primary-fixed transition-colors underline-offset-4 decoration-dashed decoration-1 hover:underline" href="#">Sustainability</a>
+<a class="font-body-md text-body-md text-surface-variant hover:text-primary-fixed transition-colors underline-offset-4 decoration-dashed decoration-1 hover:underline" href="#">The Atelier</a>
+<a class="font-body-md text-body-md text-surface-variant hover:text-primary-fixed transition-colors underline-offset-4 decoration-dashed decoration-1 hover:underline" href="#">Journal</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Support</span>
+<a class="font-body-md text-body-md text-surface-variant hover:text-primary-fixed transition-colors underline-offset-4 decoration-dashed decoration-1 hover:underline" href="#">WhatsApp Concierge</a>
+<a class="font-body-md text-body-md text-surface-variant hover:text-primary-fixed transition-colors underline-offset-4 decoration-dashed decoration-1 hover:underline" href="#">Stockists</a>
+<a class="font-body-md text-body-md text-surface-variant hover:text-primary-fixed transition-colors underline-offset-4 decoration-dashed decoration-1 hover:underline" href="#">Terms of Craft</a>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Follow</span>
+<div class="flex gap-6">
+<a class="text-surface-variant hover:text-primary-fixed" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-surface-variant hover:text-primary-fixed" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="text-surface-variant hover:text-primary-fixed" href="#"><span class="material-symbols-outlined">chat</span></a>
+</div>
+<div class="mt-4 p-4 border border-dashed border-outline-variant inline-block">
+<p class="font-label-caps text-[10px] text-outline-variant leading-tight">CRAFTED IN HARARE<br/>AVAILABLE WORLDWIDE</p>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-md text-body-md text-surface-variant/60">© 2024 Java Haus. Hand-stitched for the future.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary text-sm">eco</span>
+<span class="font-label-caps text-[10px] text-surface-variant/60 tracking-widest uppercase">Ethically Sourced Fibers</span>
+</div>
+</div>
+</footer>
+</body></html>
