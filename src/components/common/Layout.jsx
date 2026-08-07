@@ -1,7 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import CookieConsent from "../Cookies";
-import BuilderAesthetic from "./BuilderAesthetic";
+import TechAesthetic from "./TechAesthetic";
 
 const Layout = ({ children }) => {
   return (
@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       {/* Soft brand-blue gradient overlay */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.05] bg-gradient-to-tr from-brand-blue via-brand-gold/30 to-transparent"></div>
 
-      <BuilderAesthetic />
+      <TechAesthetic />
 
       <Header />
 
